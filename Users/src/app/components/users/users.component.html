@@ -1,5 +1,9 @@
 <main>
     <h1 class="title"><mat-icon>person</mat-icon> User List</h1>
+    <mat-form-field>
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="search($event)" placeholder="buscar">
+    </mat-form-field>
     <table mat-table [dataSource]="userData">
         <!-- Columna para el ID -->
         <ng-container matColumnDef="id">

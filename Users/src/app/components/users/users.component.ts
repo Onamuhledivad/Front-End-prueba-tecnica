@@ -38,15 +38,20 @@ export class UsersComponent implements OnInit {
         console.error('Error al cargar usuarios:', error);
       }
     });
-
-    
-    
   }
 
 
   verDetalles(userId: number){
     //Boton para ver los detalles de cada usuario en otra pagina 
     this.router.navigate(['/user-details', userId]);
+  }
+
+  search(event: Event) {
+    //Funcion para buscar un usuario por cualquier dato
+    const valueSearch = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = valueSearch.trim().toLowerCase();
+    this.userData = this.dataSource.filteredData;
+    
   }
 
   

@@ -7,7 +7,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
-
+import { MatTableDataSource } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     UsersComponent,
@@ -19,7 +20,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatPaginatorModule,
     MatIconModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatInputModule,
   ],
   exports: [
     UsersComponent,
