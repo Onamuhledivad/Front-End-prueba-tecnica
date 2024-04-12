@@ -37,7 +37,7 @@ export class UsersComponent implements OnInit {
   }
 
   //Boton para ver los detalles de cada usuario en otra pagina 
-  verDetalles(userId: number){
+  moreDetails(userId: number){
     this.router.navigate(['/user-details', userId]);
   }
 
