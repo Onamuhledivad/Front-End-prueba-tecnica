@@ -1,0 +1,52 @@
+<main>
+    <div style="display: flex; align-items: center;">
+    <button (click)="goBack()" class="btn1">
+        <mat-icon  class="arrow">arrow_back</mat-icon>
+        <span>Back</span>
+    </button>
+    </div>
+    
+    
+    
+    <mat-card class="mycard">
+        <mat-card-header>
+            
+            
+        </mat-card-header>
+        <mat-card-content>
+            <h1 class="title"><mat-icon>person</mat-icon> User Details</h1>
+            <div class="content">
+                <p>Id: {{ userDetails.id }}</p>
+                <p>Name: {{ userDetails.name }}</p>
+                <p>Username: {{ userDetails.username }}</p>
+            </div>
+           
+            <h3 class="title"><mat-icon>contacts</mat-icon> Contact</h3>
+            <div class="content">
+                <p><mat-icon>mail</mat-icon> {{ userDetails.email }}</p>
+                <p><mat-icon>phone</mat-icon> {{ userDetails.phone }}</p>
+                <p><mat-icon>web</mat-icon>
+                    <a [href]="'http://'+userDetails.website" target="_blank">{{ userDetails.website }}</a>
+                </p>
+            </div>
+            
+            <h3 class="title"><mat-icon>home</mat-icon> Address</h3>
+            <div class="content">
+                <p>City: {{ userDetails.address.city }}</p>
+                <p>Street: {{ userDetails.address.street }}</p>
+                <p>Suite: {{ userDetails.address.suite }}</p>
+                <p>Zipcode: {{ userDetails.address.zipcode }}</p>
+            </div>
+                
+            <h3 class="title"><mat-icon>apartment</mat-icon> Company</h3>
+            <div class="content">
+                <p>Name: {{ userDetails.company.name }}</p>
+                <p>Phrase: {{ userDetails.company.catchPhrase }}</p>
+                <p>BS: {{ userDetails.company.bs }}</p>
+            </div>
+               
+        </mat-card-content>
+    </mat-card>
+    
+      
+</main>

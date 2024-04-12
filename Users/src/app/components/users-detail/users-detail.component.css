@@ -1,0 +1,44 @@
+@import '../users/users.component.css';
+
+
+a {
+    text-decoration: none;
+}
+
+.mycard{
+    width: 70%;
+    margin:0 auto;
+}
+.material-icons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin-right: 3px;
+    color: #424242;
+}
+
+.btn1 {
+    padding: 10px 2px;
+    margin: 6px 8px 6px 8px;
+    min-width: 88px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid #dedede;
+    outline: none;
+    color: #673ab7;
+  }
+
+.btn1:hover{
+    cursor: pointer;
+}
+
+.arrow{
+    color: #673ab7;
+    font-size: 30px;
+}
+
