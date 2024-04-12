@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatTableModule} from '@angular/material/table';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { User } from 'src/app/model/user.model';
 import { UsersService } from 'src/app/services/users.service';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
@@ -12,8 +12,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
+  dataSource: any;
+  totalRecords: number = 0;
+  pageSize: number = 5;
   userData:User[] = [];
+  //se establecen las columnas
   displayedColumns: string[] = ['id', 'name', 'username', 'email', 'details'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -22,22 +25,27 @@ export class UsersComponent implements OnInit {
     private userService: UsersService){}
 
   ngOnInit(): void {
+    //Servicio para obtener la lista de usuarios
     this.userService.getUsers().subscribe({
       next: (users) => {
         this.userData = users;
-        this.paginator.firstPage();
-        this.paginator.pageSize = 5;
+        //paginacion
+        this.dataSource = new MatTableDataSource(this.userData);
+        this.totalRecords = this.dataSource.data.length;
+        this.dataSource.paginator = this.paginator;
       },
       error: (error) => {
         console.error('Error al cargar usuarios:', error);
       }
     });
+
+    
     
   }
 
 
   verDetalles(userId: number){
-    console.log('Detalles del usuario:', userId);
+    //Boton para ver los detalles de cada usuario en otra pagina 
     this.router.navigate(['/user-details', userId]);
   }
 
