@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/model/user.model';
 import { UsersService } from 'src/app/services/users.service';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-users',
@@ -13,12 +12,10 @@ import { Router } from '@angular/router';
 })
 export class UsersComponent implements OnInit {
   dataSource: any;
-  totalRecords: number = 0;
-  pageSize: number = 5;
   userData:User[] = [];
   //se establecen las columnas
   displayedColumns: string[] = ['id', 'name', 'username', 'email', 'details'];
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
   constructor(
     private router: Router,
@@ -30,8 +27,7 @@ export class UsersComponent implements OnInit {
       next: (users) => {
         this.userData = users;
         //paginacion
-        this.dataSource = new MatTableDataSource(this.userData);
-        this.totalRecords = this.dataSource.data.length;
+        this.dataSource = new MatTableDataSource<User>(this.userData);
         this.dataSource.paginator = this.paginator;
       },
       error: (error) => {
@@ -40,14 +36,13 @@ export class UsersComponent implements OnInit {
     });
   }
 
-
+  //Boton para ver los detalles de cada usuario en otra pagina 
   verDetalles(userId: number){
-    //Boton para ver los detalles de cada usuario en otra pagina 
     this.router.navigate(['/user-details', userId]);
   }
 
+  //Funcion para buscar un usuario por cualquier dato
   search(event: Event) {
-    //Funcion para buscar un usuario por cualquier dato
     const valueSearch = (event.target as HTMLInputElement).value;
     this.dataSource.filter = valueSearch.trim().toLowerCase();
     this.userData = this.dataSource.filteredData;

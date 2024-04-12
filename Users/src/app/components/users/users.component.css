@@ -49,3 +49,34 @@ table {
   font-weight: bold;
   margin-left: 5px;
 }
+
+/* Media query para pantallas más pequeñas que 768px */
+@media only screen and (max-width: 768px) {
+  main{
+    width: 100%;
+    max-width: 700px;
+    padding: 20px 10px;
+  }
+}
+
+/* Media query para pantallas más pequeñas que 576px */
+@media only screen and (max-width: 576px) {
+  main{
+    width: 100%;
+    max-width: 700px;
+    padding: 20px 10px;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  main{
+    width: 95%;
+    max-width: 400px;
+    padding: 20px 5px;
+    overflow: scroll;
+  }
+  .mat-table {
+    overflow: auto;
+    max-height: 400px;
+  }
+}

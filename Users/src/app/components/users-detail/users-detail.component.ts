@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { UsersService } from 'src/app/services/users.service';
+import * as mapboxgl from 'mapbox-gl';
 
 @Component({
   selector: 'app-users-detail',
@@ -10,6 +11,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class UsersDetailComponent {
 
+  map: mapboxgl.Map | undefined;
   userId: number = 0;
   userDetails: User = {
     id: 0,
@@ -51,10 +53,23 @@ export class UsersDetailComponent {
           console.log(this.userDetails);
         });
       });
+      this.map = new mapboxgl.Map({
+        accessToken: 'pk.eyJ1Ijoib25hbXVoIiwiYSI6ImNqcThpYnJxbTBmZnM0M2p3Nm1jaXBtODMifQ.QWxJ2Qn_CfPHzHOw8I8f3Q',
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        zoom: 8,
+        center: [-99.3084269, 19.3909832]
+      });
+      //Crear un marcador con las cordenadas del usuario
+      // const marker1 = new mapboxgl.Marker()
+      // .setLngLat([+this.userDetails.address.geo.lat, +this.userDetails.address.geo.lng])
+      // .addTo(this.map);
+
     }
 
+    // Navega hacia la ruta "/users"
     goBack(){
-      this.router.navigate(['/']); // Navega hacia la ruta "/users"
+      this.router.navigate(['/']); 
     }
   
 }

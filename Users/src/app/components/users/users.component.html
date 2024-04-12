@@ -1,10 +1,10 @@
 <main>
     <h1 class="title"><mat-icon>person</mat-icon> User List</h1>
     <mat-form-field>
-      <mat-label>Search</mat-label>
-      <input matInput (keyup)="search($event)" placeholder="buscar">
+      <mat-label>Search User</mat-label>
+      <input matInput (keyup)="search($event)" placeholder="Search User">
     </mat-form-field>
-    <table mat-table [dataSource]="userData">
+    <table mat-table [dataSource]="dataSource">
         <!-- Columna para el ID -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -40,15 +40,8 @@
         <!-- Definir las columnas que se mostrarán -->
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          
-          <!-- Definir el paginador -->
-        <mat-paginator
-            [length]="totalRecords"
-            [pageSizeOptions]="[5, 10, 25, 100]" 
-            [pageSize]="pageSize" 
-            [showFirstLastButtons]="true">
-        </mat-paginator>
-    
     </table>
+    <!-- Definir el paginador -->
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
 </main>
   

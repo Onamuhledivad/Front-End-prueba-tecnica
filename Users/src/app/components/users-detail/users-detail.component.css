@@ -42,3 +42,33 @@ a {
     font-size: 30px;
 }
 
+.match-parent {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 60px;
+  }
+
+.mapboxgl-control-container{
+    display: hidden;
+}
+
+/* Media query para pantallas más pequeñas que 768px */
+@media only screen and (max-width: 768px) {
+    .mycard{
+        width: 95%;
+       
+    }
+  }
+  
+  /* Media query para pantallas más pequeñas que 576px */
+  @media only screen and (max-width: 576px) {
+    .mycard{
+        width: 95%;
+    }
+  }
+  
+  @media only screen and (min-width: 320px) and (max-width: 480px) {
+    .mycard{
+        width: 95%;
+    }
+  }
